@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<body>
+    <form action="{% url 'polls:create_poll' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend>
+                <h1>Create a Poll</h1>
+            </legend>
+            Question :
+            <input type="text" name="question" id="questionId">
+            <br>
+            <br>
+            Polls:
+            <input type="button" value="Add" id="add">
+            <br>
+            <br>
+            <div class="choice" name="'choices">
+                
+            </div>
+            <!-- {% for choice in choices %}
+            {{ forloop.counter }}. <input type="text" id="choice{{ forloop.counter }}" name="choice{{ forloop.counter }}" value="{{ choice }}">
+            <br>
+            <br>
+            {% endfor %} -->
+        </fieldset>
+        <br>
+        <input type="submit" value="create">
+    </form>
+</body>
+
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        let val = 1;
+        $("#add").click(function () {
+            $('.choice').append(`${val}. <input type="text" name="choice"><br><br>`)
+            val++;
+        });
+    </script>
+</head>
+
+</html>
